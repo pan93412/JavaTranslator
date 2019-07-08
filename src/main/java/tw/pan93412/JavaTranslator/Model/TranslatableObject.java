@@ -1,4 +1,4 @@
-package tw.pan93412.JavaTranslator.model;
+package tw.pan93412.JavaTranslator.Model;
 import java.util.HashMap;
 
 /**

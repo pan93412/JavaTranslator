@@ -1,9 +1,9 @@
-package tw.pan93412.JavaTranslator.model;
+package tw.pan93412.JavaTranslator.Model;
 import java.util.Properties;
 
 /*
  * INFO: 已簡易重構。
- * 與 v1.0-SNAPSHOT 完全不相容。
+ * 與 v1.0-SNAPSHOT **完全不相容**。
  */
 
 /**
@@ -30,7 +30,7 @@ public class PropertiesConverter {
      * 建立 PropertiesConverter 物件，用來將
      * TranslatableObject 轉成 Properties。
      * 
-     * @param translatableObject translatableObject 物件
+     * @param translatableObject TranslatableObject 物件
      */
     public PropertiesConverter(TranslatableObject translatableObject) {
         tranObj = translatableObject;
