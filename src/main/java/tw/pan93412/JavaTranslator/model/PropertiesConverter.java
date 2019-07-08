@@ -1,63 +1,49 @@
-package tw.pan93412.javatranslator.model;
+package tw.pan93412.JavaTranslator.model;
 import java.util.Properties;
-import java.io.Reader;
 
 /*
- * TODO: 未來會重構
+ * INFO: 已簡易重構。
+ * 與 v1.0-SNAPSHOT 完全不相容。
  */
 
 /**
- * 將 Java 的 .properties 轉換成 Translatab
- * leObject。
+ * 將 Java 的 .properties 轉換成 TranslatableObject。
  * TranslatableObject 是 JavaTranslator 唯一認可的翻譯物件，
  * 而這個轉換函式，可以將 properties 檔轉換成 JavaTranslator 
  * 可以認可的翻譯物件。
  */
 public class PropertiesConverter {
-    private final Reader source;
-    private TranslatableObject tranObj;
+    private Properties pObj = new Properties();
+    private TranslatableObject tranObj = new TranslatableObject();
 
     /**
      * 建立 PropertiesConverter 物件，用來將
-     * properties 檔轉成 TranslatableObject。
+     * Properties 物件轉成 TranslatableObject。
      * 
-     * @param source Properties 檔來源，可以使用 
-     * <code>java.io.InputStreamReader</code> 等等。
+     * @param propertiesObject properties 物件
      */
-    public PropertiesConverter(Reader source) {
-        this.source = source;
-    }
-
-    /**
-     * 建立 PropertiesConverter 物件，用來將
-     * TranslatableObject 轉成 properties 檔。
-     *
-     * @param tranObj TranslatableObject 物件。
-     */
-    public PropertiesConverter(TranslatableObject tranObj) {
-        this.tranObj = tranObj;
+    public PropertiesConverter(Properties propertiesObject) {
+        pObj = propertiesObject;
     }
     
     /**
-     * 將 .properties 檔轉換成 JavaTranslator 認可的
+     * 建立 PropertiesConverter 物件，用來將
+     * TranslatableObject 轉成 Properties。
+     * 
+     * @param translatableObject translatableObject 物件
+     */
+    public PropertiesConverter(TranslatableObject translatableObject) {
+        tranObj = translatableObject;
+    }
+
+    /**
+     * 將 Properties 物件轉換成 JavaTranslator 認可的
      * TranslatableObject 物件。
      * 
-     * @return TranslatableObject 物件。
+     * @return TranslatableObject 物件
      */
     public TranslatableObject ConvertToTranslatableObject() {
-        // 將 Reader 轉換成 Properties。
-        Properties pObj = new Properties();
-        try {
-            pObj.load(source);
-        } catch (java.io.IOException err) {
-            System.err.println("Something Wrong when reading source!"); // TODO: i18n
-        }
-        
-        // 接著，取得 Properties 的所有 Key。
-        java.util.Set<String> pObjKeys = pObj.stringPropertyNames();
-
-        // 接著就是將 Properties 的內容遞迴寫入 TranslatableObject 啦！
-        for (String key : pObjKeys) {
+        for (String key : pObj.stringPropertyNames()) {
             tranObj.put(key, pObj.getProperty(key));
         }
 
@@ -65,13 +51,18 @@ public class PropertiesConverter {
     }
 
     /**
-     * 將 TranslatableObject 物件轉成可用於
-     * 寫入 properties 檔的 Writer。
+     * 將 TranslatableObject 物件轉換成
+     * Properties 物件。
      * 
-     * @return Writer 物件
+     * @return Properties 物件
      */ 
-    public TranslatableObject ConvertToProperties() {
-        
+    public Properties ConvertToProperties() {
+        for (String tranKey : tranObj.keySet()) {
+            pObj.setProperty(tranKey, tranObj.get(tranKey));
+        }
+
+        return pObj;
+    }
 }
 
 

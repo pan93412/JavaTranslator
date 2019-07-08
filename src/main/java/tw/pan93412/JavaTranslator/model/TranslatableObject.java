@@ -1,4 +1,4 @@
-package tw.pan93412.javatranslator.model;
+package tw.pan93412.JavaTranslator.model;
 import java.util.HashMap;
 
 /**
@@ -43,5 +43,31 @@ public class TranslatableObject extends HashMap<String, String> {
      */
     public String getLanguage() {
         return language;
+    }
+
+    /**
+     * 合併 ref 和現有 TranslatableObject 物件 (def)。
+     * 先遞迴 ref 的 Key，如果 def 也有相對應的 Key，
+     * 則將 <code>(ref 的 Key, def 的 Value)</code> 寫入 
+     * result (新的 TranslatableObject 物件)，如果 def
+     * 沒有相對應的 Key，則寫入 <code>(ref 的 Key, ref 的 Value)</code>。
+     * 
+     * def 與 ref 是來自 Gettext 工具。
+     * 
+     * @param ref 參考來源 (reference)
+     * @return 合併過的 TranslatableObject。
+     */
+    public TranslatableObject mergeObject(TranslatableObject ref) {
+        TranslatableObject def = this;
+        TranslatableObject result = new TranslatableObject();
+
+        for ( String refKey : ref.keySet() ) {
+			if (def.containsKey(refKey)) {
+                result.put(refKey, def.get(refKey));
+            } else {
+                result.put(refKey, ref.get(refKey));
+            }
+        }
+        return result;
     }
 }
