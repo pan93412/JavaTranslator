@@ -1,0 +1,52 @@
+狀態：第 3 條字串，共 105 條字串。
+      未翻譯
+      
+原文： %red%Welcome to PluginWorld!
+
+翻譯： %red%歡迎來到 PluginWorld！|
+
+----
+
+[指令列表]
+輸入指令之後按下 Enter！
+
+::next
+       跳至下一條
+::prev
+       跳至上一條
+::to <第 n 條>
+       前往第 n 條
+::copy
+       直接複製原文（不經修改）
+::save
+       儲存 Properties
+::saveas [檔名]
+       另存 Properties
+::load [檔名]
+       載入 Properties
+::merge [參考檔案]
+       合併 Properties
+       必須先 load 才能使用 merge
+::exit
+       離開程式
+::help
+       顯示此說明
+輸入 q 按 Enter 回到原畫面
+
+:
+---
+
+狀態：未載入檔案！
+      
+原文： 請使用 ::load 載入檔案
+       或使用 ::help 取得說明
+
+翻譯： ::load
+目前位置：/home/pan93412/trans
+.. Test.properties
+
+ [ 輸入 ::back 回去上個畫面！ ]
+請輸入檔名，或輸入路徑跳至某目錄：
+Test.properties
+
+---
