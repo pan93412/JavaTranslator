@@ -1,4 +1,5 @@
 package tw.pan93412.JavaTranslator.View;
+import java.util.Scanner;
 
 /**
  * 說明頁面
@@ -9,25 +10,40 @@ public class HelpScreenActivity {
         final String nlspace = "\n" + space; // newline + space
 
         return new StringBuilder()
-            .append(I18n.i18n("model.HelpScreenActivity.WelcomeTxt1"))
-            .append(I18n.i18n("model.HelpScreenActivity.WelcomeTxt2"))
-            .append(space + extracted())
-            .append(I18n.i18n("model.HelpScreenActivity.CommandList"))
-            .append("::next" + nlspace + I18n.i18n("model.HelpScreenActivity.NextCommandDesc"))
-            .append("::prev" + nlspace + I18n.i18n("model.HelpScreenActivity.PrevCommandDesc"))
-            .append("::to " + I18n.i18n("model.HelpScreenActivity.ToCommandArg") + nlspace + I18n.i18n("model.HelpScreenActivity.ToCommandDesc"))
-            .append("::copy" + nlspace + I18n.i18n("model.HelpScreenActivity.CopyCommandDesc"))
-            .append("::save" + nlspace + I18n.i18n("model.HelpScreenActivity.SaveCommandDesc"))
-            .append("::saveas" + I18n.i18n("model.HelpScreenActivity.FilenameArg") + nlspace + I18n.i18n("model.HelpScreenActivity.SaveasCommandDesc"))
-            .append("::load" + I18n.i18n("model.HelpScreenActivity.FilenameArg") + nlspace + I18n.i18n("model.HelpScreenActivity.LoadCommandDesc"))
-            .append("::merge" + I18n.i18n("model.HelpScreenActivity.MergeCommandArg") + nlspace + I18n.i18n("model.HelpScreenActivity.MergeCommandDesc"))
-            .append(nlspace + I18n.i18n("model.HelpScreenActivity.MergeCommandComment"))
-            .append("::exit" + nlspace + I18n.i18n("model.HelpScreenActivity.ExitCommandDesc"))
-            .append("::help" + nlspace + I18n.i18n("model.HelpScreenActivity.HelpCommandDesc"))
-            .append(I18n.i18n("model.HelpScreenActivity.PromptMsg"))
-            .append(":").toString();
+            .append(I18n.i18n("Model.HelpScreenActivity.WelcomeTxt1"))
+            .append(I18n.i18n("Model.HelpScreenActivity.WelcomeTxt2"))
+            .append(space + I18n.i18n("model.HelpScreenActivity.UsageTxt"))
+            .append(I18n.i18n("Model.HelpScreenActivity.CommandList"))
+            .append("::next" + nlspace + I18n.i18n("Model.HelpScreenActivity.NextCommandDesc"))
+            .append("::prev" + nlspace + I18n.i18n("Model.HelpScreenActivity.PrevCommandDesc"))
+            .append("::to " + I18n.i18n("Model.HelpScreenActivity.ToCommandArg") + nlspace + I18n.i18n("Model.HelpScreenActivity.ToCommandDesc"))
+            .append("::copy" + nlspace + I18n.i18n("Model.HelpScreenActivity.CopyCommandDesc"))
+            .append("::save" + nlspace + I18n.i18n("Model.HelpScreenActivity.SaveCommandDesc"))
+            .append("::saveas" + I18n.i18n("Model.HelpScreenActivity.FilenameArg") + nlspace + I18n.i18n("Model.HelpScreenActivity.SaveasCommandDesc"))
+            .append("::load" + I18n.i18n("Model.HelpScreenActivity.FilenameArg") + nlspace + I18n.i18n("Model.HelpScreenActivity.LoadCommandDesc"))
+            .append("::merge" + I18n.i18n("Model.HelpScreenActivity.MergeCommandArg") + nlspace + I18n.i18n("Model.HelpScreenActivity.MergeCommandDesc"))
+            .append(nlspace + I18n.i18n("Model.HelpScreenActivity.MergeCommandComment"))
+            .append("::exit" + nlspace + I18n.i18n("Model.HelpScreenActivity.ExitCommandDesc"))
+            .append("::help" + nlspace + I18n.i18n("Model.HelpScreenActivity.HelpCommandDesc"))
+            .append(I18n.i18n("Model.HelpScreenActivity.PromptMsg"))
+            .toString();
     }
-	private static String extracted() {
-		return I18n.i18n("model.HelpScreenActivity.UsageTxt");
+
+	public void doOutput() {
+        System.out.print(activityContent());
+
+        Scanner stdinReader = new Scanner(System.in);
+
+        while (true) {
+            System.out.print(":");
+            if (stdinReader.hasNextLine()) {
+                String input = stdinReader.nextLine();
+                
+                if (input == "q")
+                    break;
+            }
+        }
+
+        stdinReader.close();
 	}
 }
