@@ -7,7 +7,9 @@ import java.util.Properties;
  */
 
 /**
- * 將 Java 的 .properties 轉換成 TranslatableObject。
+ * 將 Java 的 Properties 物件轉換成 TranslatableObject，
+ * 或是把 TranslatableObject 轉回 Properties。
+ * 
  * TranslatableObject 是 JavaTranslator 唯一認可的翻譯物件，
  * 而這個轉換函式，可以將 properties 檔轉換成 JavaTranslator 
  * 可以認可的翻譯物件。

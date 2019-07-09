@@ -18,6 +18,7 @@ import java.util.HashMap;
  * 
  */
 public class TranslatableObject extends HashMap<String, String> {
+    private static final long serialVersionUID = 7327929052697765649L;
     private static String language;
 
     /**
