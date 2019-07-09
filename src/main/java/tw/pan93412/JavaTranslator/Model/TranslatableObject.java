@@ -6,7 +6,7 @@ import java.util.HashMap;
  * <p>
  * 每個可翻譯物件（例如 Properties 檔或 strings.xml） 都可以被解析成 <code>TranslatableObject</code>
  * 物件。 <code>TranslatableObject</code> 如同 <code>HashMap</code> （實際上也是 HashMap
- * 的繼承），但是也附加了些功能，例如 setLanguage() 設定語言（標籤）等等。
+ * 的繼承），但是也附加了些功能，例如 setLang() 設定語言（標籤）等等。
  * </p>
  * 
  * <p>
@@ -28,11 +28,11 @@ public class TranslatableObject extends HashMap<String, String> {
      * 相對應的規則。直至 v0.1 釋出時，這僅是一個
      * 用來指明「可翻譯通用物件」語言的標籤。
      * 
-     * @param languageName 語言名稱，
+     * @param lang 語言名稱，
      * 例如 zh_TW、zh_CN、en_US。
      */
-    public void setLanguage(String languageName) {
-        language = languageName;
+    public void setLang(String lang) {
+        language = lang;
     }
 
     /**
@@ -42,7 +42,7 @@ public class TranslatableObject extends HashMap<String, String> {
      * 
      * @return 語言名稱，例如 zh_TW、en_US。
      */
-    public String getLanguage() {
+    public String getLang() {
         return language;
     }
 
@@ -58,7 +58,7 @@ public class TranslatableObject extends HashMap<String, String> {
      * @param ref 參考來源 (reference)
      * @return 合併過的 TranslatableObject。
      */
-    public TranslatableObject mergeObject(TranslatableObject ref) {
+    public TranslatableObject mergeWith(TranslatableObject ref) {
         TranslatableObject def = this;
         TranslatableObject result = new TranslatableObject();
 
