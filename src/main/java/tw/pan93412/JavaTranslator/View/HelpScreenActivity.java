@@ -4,7 +4,7 @@ import java.util.Scanner;
 /**
  * 說明頁面
  */
-public class HelpScreenActivity {
+public class HelpScreenActivity implements ActivityAbstruct {
     public static String activityContent() {
         final String space = "    "; // 4 格縮排 
         final String nlspace = "\n" + space; // newline + space
@@ -34,6 +34,12 @@ public class HelpScreenActivity {
 
         Scanner stdinReader = new Scanner(System.in);
 
+        /*
+         * `:n`
+         * （會繼續輸出 ":"）
+         * `:q`
+         * （跳出迴圈，結束程式）
+         */
         while (true) {
             System.out.print(":");
             if (stdinReader.hasNextLine()) {
