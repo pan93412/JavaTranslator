@@ -1,7 +1,7 @@
 # JavaTranslator
 
 ## 概述
-這個專案，可以讓 properties, string.xml 之類的東西能夠使用方便的介面來翻譯。目前僅支援 properties，不過因為程式架構本身就是設計成支援多格式（不然何必有 TranslationObject），所以 string.xml 及 Gettext 格式 (.po) 未來也會支援。
+這個專案可以讓 properties, string.xml 之類的東西能夠使用方便的介面來翻譯。目前僅支援 properties，不過因為程式架構本身就是設計成支援多格式（不然何必有 TranslationObject），所以 string.xml 及 Gettext 格式 (.po) 未來也會支援。
 
 這個軟體可以讓 Minecraft (.properties)、Android (strings.xml) 的翻譯簡便許多。以往要翻譯 properties 都得用 Notepad 開啟，而且還會擔心「會不會不小心把原來的 properties 檔案某個 ID 弄壞」，而且在 JavaTranslator 出現之前，還要擔心新舊 properties 的合併問題，JavaTranslator 就是要來解決這問題的。
 
